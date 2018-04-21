@@ -1,0 +1,24 @@
+{
+  "name": "pollster",
+  "version": "0.0.1",
+  "description": "Poll for condition, then notify",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/nkashy1/pollster"
+  },
+  "author": "nkashy1",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lodash.isfunction": "^3.0.9",
+    "lodash.isnumber": "^3.0.3",
+    "lodash.issafeinteger": "^4.0.4"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.5.5",
+    "mocha": "^5.1.1"
+  }
+}
