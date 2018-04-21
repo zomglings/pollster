@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "jsdoc": "^3.5.5",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "tmp": "0.0.33"
   }
 }
