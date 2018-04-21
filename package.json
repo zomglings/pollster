@@ -1,5 +1,5 @@
 {
-  "name": "pollster",
+  "name": "@nkashy1/pollster",
   "version": "0.0.1",
   "description": "Poll for condition, then notify",
   "main": "index.js",
