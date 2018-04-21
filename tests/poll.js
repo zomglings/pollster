@@ -16,8 +16,8 @@ describe('poll', function() {
 
     it('successfully calls its callback once its predicate returns true', function(done) {
         return poll(
-                function() {
-                    return true;
+                function(cb) {
+                    return cb(null, true);
                 },
                 1000,
                 Infinity,
@@ -26,8 +26,8 @@ describe('poll', function() {
 
     it('returns an error if interval is not an integer', function(done) {
         return poll(
-                function() {
-                    return true;
+                function(cb) {
+                    return cb(null, true);
                 },
                 [],
                 Infinity,
@@ -42,8 +42,8 @@ describe('poll', function() {
 
     it('returns an error if interval is not a positive integer', function(done) {
         poll(
-                function() {
-                    return true;
+                function(cb) {
+                    return cb(null, true);
                 },
                 0,
                 Infinity,
@@ -71,13 +71,12 @@ describe('poll', function() {
        let lowerBound = 80;
        let upperBound = 120;
 
-       var predicate = function() {
+       var predicate = function(cb) {
            if (counter < targetCount) {
                counter++;
-               return false;
+               return cb(null, false);
            }
-
-           return true;
+           return cb(null, true);
        };
 
        return poll(predicate, 10, Infinity, function(err) {
@@ -96,8 +95,8 @@ describe('poll', function() {
 
     it('returns an error if maxAttempts is neither null nor a number', function(done) {
         return poll(
-                function() {
-                    return true;
+                function(cb) {
+                    return cb(null, true);
                 },
                 10,
                 [],
@@ -113,13 +112,12 @@ describe('poll', function() {
     it('replaces a null maxAttempts with Infinity', function(done) {
         var target = 10;
         var counter = 0;
-        var predicate = function() {
+        var predicate = function(cb) {
             if (counter < target) {
                 counter++;
-                return false;
+                return cb(null, false);
             }
-            
-            return true;
+            return cb(null, true);    
         };
 
         return poll(predicate, 1, null, done);
@@ -128,7 +126,7 @@ describe('poll', function() {
 
     it('returns an error if it is asked to poll its predicates in excess of maxAttempts times', function(done) {
         return poll(
-                function() {return false;},
+                function(cb) {return cb(null, false);},
                 5,
                 5,
                 function(err) {

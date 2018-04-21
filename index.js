@@ -39,13 +39,19 @@ function poll(predicate, interval, maxAttempts, done) {
         return done(new Error(`maxAttempts ${maxAttempts} is non-positive`));
     }
 
-    if (!predicate()) {
-        return setTimeout(function() {
-            poll(predicate, interval, maxAttempts-1, done);
-        }, interval);
-    }
+    return predicate(function(err, result) {
+        if (!!err) {
+            return done(err);
+        }
 
-    return done();
+        if (!result) {
+            return setTimeout(function() {
+                poll(predicate, interval, maxAttempts-1, done);
+            }, interval);
+        }
+
+        return done();
+    });
     // END polling
 }
 
