@@ -25,6 +25,11 @@ to use them with pollster.
 Currently, pollster requires you to define your handlers in node. This can change if there is sufficient
 demand for it (just open an issue).
 
-[This example](https://gist.github.com/nkashy1/304a372d4873ac705ea287ac2ce2097c) shows you how to
-set up a poll on the creation of a specific file and send an SMS in response.
 
+### Examples
+
+1. [Poll for file creation](https://gist.github.com/nkashy1/304a372d4873ac705ea287ac2ce2097c) -- set up a poll on the creation
+of a specific file and send an SMS in response
+
+2. [Poll on Google Compute Engine VM termination](https://gist.github.com/nkashy1/45af143b0449e3f52c33dc7869745f58) -- set up a
+poll on the termination of a [GCE](https://cloud.google.com/compute/) instance and send an SMS in response
